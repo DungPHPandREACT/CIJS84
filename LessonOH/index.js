@@ -79,13 +79,27 @@ const student2 = { name: 'Đỗ Văn B', age: 19 };
 // Output 6
 // Input 1,2,3,4,5
 // Output: 15
-const sumListNumber = (a, b = 0, ...listNumber) => {
-	console.log(listNumber);
-	console.log(a);
-	console.log(b);
-};
-sumListNumber(1);
+// const sumListNumber = (a, b = 0, ...listNumber) => {
+// 	console.log(listNumber);
+// 	console.log(a);
+// 	console.log(b);
+// };
+// sumListNumber(1);
 // -Destructuring
+const teacher = {
+	name: 'Trần Thị B',
+	gender: 'girl',
+};
+// const nameTeacher = teacher.name;
+// const gender = teacher.gender;
+const { gender, name: nameTeacher, age = 0 } = teacher;
+
+const listNumber = [1, 2, 3];
+const [, ...numbers] = listNumber;
+// console.log(number0);
+// console.log(number);
+console.log(numbers);
+
 // -Module
 // -Array function: map, filter, findIndex, find...
 // -Tạo project trong reactjs
