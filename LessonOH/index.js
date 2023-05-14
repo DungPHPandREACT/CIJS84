@@ -27,7 +27,17 @@ const tinhBinhPhuong = (n) => n ** 2;
 // 	console.log('Xin chào thế giới');
 // };
 
-// -Template literal
+// -Template literal: ``
+const maLop = 'CIJSXYZ';
+const diaChi = 'Hà Nội';
+// const str = 'MindX ' + maLop + '\nHọc ở ' + diaChi;
+const str = `MindX ${maLop}
+Học ở ${diaChi}`;
+
+// MindXCIJS84
+// Học ở Thành Công
+console.log(str);
+
 // -Spread & Rest Operator
 // -Destructuring
 // -Module
