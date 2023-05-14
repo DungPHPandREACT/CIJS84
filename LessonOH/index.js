@@ -56,8 +56,8 @@ const student = {
 };
 // console.log(student);
 
-// const student1 = {name: 'Nguyễn Văn A', age: 18, gpa: 3.9};
-// const student2 = {name: 'Đỗ Văn B', age: 19}
+const student1 = { name: 'Nguyễn Văn A', age: 18, gpa: 3.9 };
+const student2 = { name: 'Đỗ Văn B', age: 19 };
 // const student3 = {...student1, ...student2};
 // {
 //     gpa: 3.9,
@@ -65,12 +65,14 @@ const student = {
 // }
 // console.log(student3);
 
-const arr1 = [1, 2, 3];
-const arr2 = [1, 2, 3];
-const arr3 = [...arr1, ...arr2];
-console.log(arr3);
-
+// const arr1 = [1, 2, 3];
+// const arr2 = [1, 2, 3];
 // - Thêm phần tử vào array, thêm key vào object.
+// const arr3 = [4, 5, 6, ...arr1, ...arr2];
+// console.log(arr3);
+const student3 = { gpa: 3, ...student1, ...student2, gender: 'Boy' };
+
+console.log(student3);
 
 // -Destructuring
 // -Module
