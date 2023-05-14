@@ -70,10 +70,21 @@ const student2 = { name: 'Đỗ Văn B', age: 19 };
 // - Thêm phần tử vào array, thêm key vào object.
 // const arr3 = [4, 5, 6, ...arr1, ...arr2];
 // console.log(arr3);
-const student3 = { gpa: 3, ...student1, ...student2, gender: 'Boy' };
+// const student3 = { gpa: 3, ...student1, ...student2, gender: 'Boy' };
 
-console.log(student3);
+// console.log(student3);
 
+// Viết hàm tính tổng của các số được truyền vào
+// Input 1,2,3
+// Output 6
+// Input 1,2,3,4,5
+// Output: 15
+const sumListNumber = (a, b = 0, ...listNumber) => {
+	console.log(listNumber);
+	console.log(a);
+	console.log(b);
+};
+sumListNumber(1);
 // -Destructuring
 // -Module
 // -Array function: map, filter, findIndex, find...
