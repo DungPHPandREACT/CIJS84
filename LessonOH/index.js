@@ -92,15 +92,41 @@ const teacher = {
 };
 // const nameTeacher = teacher.name;
 // const gender = teacher.gender;
-const { gender, name: nameTeacher, age = 0 } = teacher;
+// const { gender, name: nameTeacher, age = 0 } = teacher;
 
-const listNumber = [1, 2, 3];
-const [, ...numbers] = listNumber;
+// const listNumber = [1, 2, 3];
+// const [, ...numbers] = listNumber;
 // console.log(number0);
 // console.log(number);
-console.log(numbers);
+// console.log(numbers);
+
+// -Array function: map, filter, findIndex, find...
+// Bài 1: Cho một mảng A = [1,2,3,5] có các phần tử là số.
+// Viết code trả về một mảng mới có giá trị là
+// các phần tử trong mảng A * 2 (newArr[i] = A[i]*2)
+//Output = [2,4,6,10]
+// const A = [1, 2, 3, 5];
+// Cách 1:
+// const newArr = [];
+// for (let i = 0; i < A.length; i++) {
+// 	newArr.push(A[i] * 2);
+// }
+// console.log(newArr);
+
+// Cach 2: su dung ham map
+
+// const newArr = A.map((value, index) => value);
+// console.log(newArr);
+// Bài 2: Cho một mảng B = [1,2,3,4,5], viết code trả về mảng mới chứa
+// các phần tử là số lẻ trong mảng B
+// Output: newArr = [1,3,5]
+const B = [1, 2, 3, 4, 5];
+// const newArr = B.filter((value) => value >= 5);
+// const index = B.find((value) => value > 2);
+// console.log(index);
 
 // -Module
-// -Array function: map, filter, findIndex, find...
+
+
 // -Tạo project trong reactjs
 // -Component trong reactjs
