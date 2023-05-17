@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import CardProduct from './CardProduct';
 import Navigation from './layout/Navigation';
 import { Footer } from './layout/Footer';
 import Header from './layout/Header';
