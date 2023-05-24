@@ -68,6 +68,14 @@ function App() {
 		setUserName(event.target.value);
 	};
 
+	const deleteStudent = (id) => {
+		const listNewStudent = listStudent.filter((student) => {
+			return student.id !== id;
+		});
+
+		setListStudent(listNewStudent);
+	};
+
 	return (
 		<Container className='mt-5'>
 			<div className='mt-2' style={{ display: 'flex' }}>
@@ -99,6 +107,7 @@ function App() {
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Username</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -109,6 +118,7 @@ function App() {
 								firstName={student.firstName}
 								lastName={student.lastName}
 								userName={student.userName}
+								onDelete={deleteStudent}
 							/>
 						);
 					})}
