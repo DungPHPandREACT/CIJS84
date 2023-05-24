@@ -43,6 +43,7 @@ function App() {
 	const [firstName, setFirstName] = useState(null);
 	const [lastName, setLastName] = useState(null);
 	const [userName, setUserName] = useState(null);
+	const [isUpdate, setIsUpdate] = useState(false);
 
 	const handleAddStudent = () => {
 		const newStudent = {
@@ -81,6 +82,8 @@ function App() {
 		setFirstName(student.firstName);
 		setLastName(student.lastName);
 		setUserName(student.userName);
+
+		setIsUpdate(true);
 	};
 
 	const handleUpdateStudent = () => {
@@ -104,14 +107,20 @@ function App() {
 			return student;
 		});
 		setListStudent(listNewStudent);
+		setIsUpdate(false);
+		setId('');
+		setFirstName('');
+		setLastName('');
+		setUserName('');
 	};
 
 	return (
 		<Container className='mt-5'>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>ID</label>
-				<input value={id} onChange={handleChangeId} />
+				<input value={id} onChange={handleChangeId} disabled={isUpdate} />
 			</div>
+
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>First name</label>
 				<input value={firstName} onChange={handleChangeFirstName} />
@@ -125,15 +134,15 @@ function App() {
 				<input value={userName} onChange={handleChangeUserName} />
 			</div>
 			<div className='mt-5'>
-				<Button color='primary' onClick={handleAddStudent}>
-					Add Student
-				</Button>
-
-				<span style={{ marginLeft: '12px' }}>
+				{isUpdate === true ? (
 					<Button color='secondary' onClick={handleUpdateStudent}>
 						Update Student
 					</Button>
-				</span>
+				) : (
+					<Button color='primary' onClick={handleAddStudent}>
+						Add Student
+					</Button>
+				)}
 			</div>
 
 			<Table>
