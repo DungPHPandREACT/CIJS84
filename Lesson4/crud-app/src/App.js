@@ -40,22 +40,32 @@ function App() {
 	]);
 
 	const [id, setId] = useState(null);
+	const [firstName, setFirstName] = useState(null);
+	const [lastName, setLastName] = useState(null);
+	const [userName, setUserName] = useState(null);
 
 	const handleAddStudent = () => {
-		const listStudentOld = [...listStudent];
-
 		const newStudent = {
 			id: id,
+			firstName: firstName,
+			lastName: lastName,
+			userName: userName,
 		};
 
-		listStudentOld.push(newStudent);
-		setListStudent(listStudentOld);
+		setListStudent([...listStudent, newStudent]);
 	};
 
 	const handleChangeId = (event) => {
-		console.log('event: ', event);
-		console.log('event.target.value: ', event.target.value);
 		setId(event.target.value);
+	};
+	const handleChangeFirstName = (event) => {
+		setFirstName(event.target.value);
+	};
+	const handleChangeLastName = (event) => {
+		setLastName(event.target.value);
+	};
+	const handleChangeUserName = (event) => {
+		setUserName(event.target.value);
 	};
 
 	return (
@@ -66,15 +76,15 @@ function App() {
 			</div>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>First name</label>
-				<input />
+				<input onChange={handleChangeFirstName} />
 			</div>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>Last name</label>
-				<input />
+				<input onChange={handleChangeLastName} />
 			</div>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>Username</label>
-				<input />
+				<input onChange={handleChangeUserName} />
 			</div>
 			<div className='mt-5'>
 				<Button color='primary' onClick={handleAddStudent}>

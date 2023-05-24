@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CardProduct = () => {
+const CardProduct = (props) => {
 	return (
 		<div className='col mb-5'>
 			<div className='card h-100'>
@@ -21,15 +21,19 @@ const CardProduct = () => {
 				<div className='card-body p-4'>
 					<div className='text-center'>
 						{/* Product name*/}
-						<h5 className='fw-bolder'>Special Item</h5>
+						<h5 className='fw-bolder'>{props.nameProduct}</h5>
 						{/* Product reviews*/}
-						<div className='d-flex justify-content-center small text-warning mb-2'>
-							<div className='bi-star-fill' />
-							<div className='bi-star-fill' />
-							<div className='bi-star-fill' />
-							<div className='bi-star-fill' />
-							<div className='bi-star-fill' />
-						</div>
+						{props.isRate === true ? (
+							<div className='d-flex justify-content-center small text-warning mb-2'>
+								<div className='bi-star-fill' />
+								<div className='bi-star-fill' />
+								<div className='bi-star-fill' />
+								<div className='bi-star-fill' />
+								<div className='bi-star-fill' />
+							</div>
+						) : (
+							''
+						)}
 						{/* Product price*/}
 						<span className='text-muted text-decoration-line-through'>
 							$20.00
