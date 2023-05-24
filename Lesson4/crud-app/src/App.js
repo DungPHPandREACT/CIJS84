@@ -83,6 +83,29 @@ function App() {
 		setUserName(student.userName);
 	};
 
+	const handleUpdateStudent = () => {
+		const newStudent = {
+			id: id,
+			lastName: lastName,
+			firstName: firstName,
+			userName: userName,
+		};
+
+		const listNewStudent = listStudent.map((student) => {
+			if (student.id === id) {
+				return {
+					id: id,
+					lastName: lastName,
+					firstName: firstName,
+					userName: userName,
+				};
+			}
+
+			return student;
+		});
+		setListStudent(listNewStudent);
+	};
+
 	return (
 		<Container className='mt-5'>
 			<div className='mt-2' style={{ display: 'flex' }}>
@@ -107,7 +130,9 @@ function App() {
 				</Button>
 
 				<span style={{ marginLeft: '12px' }}>
-					<Button color='secondary'>Update Student</Button>
+					<Button color='secondary' onClick={handleUpdateStudent}>
+						Update Student
+					</Button>
 				</span>
 			</div>
 
