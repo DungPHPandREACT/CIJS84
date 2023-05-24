@@ -76,28 +76,39 @@ function App() {
 		setListStudent(listNewStudent);
 	};
 
+	const updateStudent = (student) => {
+		setId(student.id);
+		setFirstName(student.firstName);
+		setLastName(student.lastName);
+		setUserName(student.userName);
+	};
+
 	return (
 		<Container className='mt-5'>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>ID</label>
-				<input onChange={handleChangeId} />
+				<input value={id} onChange={handleChangeId} />
 			</div>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>First name</label>
-				<input onChange={handleChangeFirstName} />
+				<input value={firstName} onChange={handleChangeFirstName} />
 			</div>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>Last name</label>
-				<input onChange={handleChangeLastName} />
+				<input value={lastName} onChange={handleChangeLastName} />
 			</div>
 			<div className='mt-2' style={{ display: 'flex' }}>
 				<label>Username</label>
-				<input onChange={handleChangeUserName} />
+				<input value={userName} onChange={handleChangeUserName} />
 			</div>
 			<div className='mt-5'>
 				<Button color='primary' onClick={handleAddStudent}>
 					Add Student
 				</Button>
+
+				<span style={{ marginLeft: '12px' }}>
+					<Button color='secondary'>Update Student</Button>
+				</span>
 			</div>
 
 			<Table>
@@ -119,6 +130,7 @@ function App() {
 								lastName={student.lastName}
 								userName={student.userName}
 								onDelete={deleteStudent}
+								onUpdate={updateStudent}
 							/>
 						);
 					})}
