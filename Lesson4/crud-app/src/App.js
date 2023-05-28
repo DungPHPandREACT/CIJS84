@@ -44,6 +44,8 @@ function App() {
 	const [lastName, setLastName] = useState(null);
 	const [userName, setUserName] = useState(null);
 	const [isUpdate, setIsUpdate] = useState(false);
+	const [keyword, setKeyword] = useState('');
+	const [listStudentFilter, setListStudentFilter] = useState([]);
 
 	const handleAddStudent = () => {
 		const newStudent = {
@@ -114,6 +116,27 @@ function App() {
 		setUserName('');
 	};
 
+	const handleSearch = (event) => {
+		setKeyword(event.target.value);
+		// const keyword = event.target.value;
+
+		// console.log(keyword);
+
+		// const result = listStudent.filter((student) => {
+		// 	return student.userName.includes(keyword);
+		// });
+
+		// setListStudent(result);
+	};
+
+	const handleClickSearch = () => {
+		const result = listStudent.filter((student) => {
+			return student.userName.includes(keyword);
+		});
+
+		setListStudentFilter(result);
+	};
+
 	return (
 		<Container className='mt-5'>
 			<div className='mt-2' style={{ display: 'flex' }}>
@@ -144,6 +167,16 @@ function App() {
 					</Button>
 				)}
 			</div>
+			<div className='mt-5 mb-5' style={{ display: 'flex' }}>
+				<Input onChange={handleSearch} />
+				<Button
+					color='primary'
+					style={{ marginLeft: '8px' }}
+					onClick={handleClickSearch}
+				>
+					Search
+				</Button>
+			</div>
 
 			<Table>
 				<thead>
@@ -156,18 +189,31 @@ function App() {
 					</tr>
 				</thead>
 				<tbody>
-					{listStudent.map((student, index) => {
-						return (
-							<Student
-								id={student.id}
-								firstName={student.firstName}
-								lastName={student.lastName}
-								userName={student.userName}
-								onDelete={deleteStudent}
-								onUpdate={updateStudent}
-							/>
-						);
-					})}
+					{listStudentFilter.length > 0
+						? listStudentFilter.map((student, index) => {
+								return (
+									<Student
+										id={student.id}
+										firstName={student.firstName}
+										lastName={student.lastName}
+										userName={student.userName}
+										onDelete={deleteStudent}
+										onUpdate={updateStudent}
+									/>
+								);
+						  })
+						: listStudent.map((student, index) => {
+								return (
+									<Student
+										id={student.id}
+										firstName={student.firstName}
+										lastName={student.lastName}
+										userName={student.userName}
+										onDelete={deleteStudent}
+										onUpdate={updateStudent}
+									/>
+								);
+						  })}
 				</tbody>
 			</Table>
 		</Container>
