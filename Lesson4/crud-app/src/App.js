@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Count from './Count';
 import { Button, Container, Input, Table } from 'reactstrap';
 import Student from './Student';
+import debounce from 'lodash.debounce';
 
 function App() {
 	const [listStudent, setListStudent] = useState([
@@ -39,10 +40,10 @@ function App() {
 		},
 	]);
 
-	const [id, setId] = useState(null);
-	const [firstName, setFirstName] = useState(null);
-	const [lastName, setLastName] = useState(null);
-	const [userName, setUserName] = useState(null);
+	const [id, setId] = useState('');
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+	const [userName, setUserName] = useState('');
 	const [isUpdate, setIsUpdate] = useState(false);
 	const [keyword, setKeyword] = useState('');
 	const [listStudentFilter, setListStudentFilter] = useState([]);
@@ -116,18 +117,18 @@ function App() {
 		setUserName('');
 	};
 
-	const handleSearch = (event) => {
+	const handleSearch = debounce((event) => {
 		setKeyword(event.target.value);
 		// const keyword = event.target.value;
 
-		// console.log(keyword);
+		console.log(event.target.value);
 
 		// const result = listStudent.filter((student) => {
 		// 	return student.userName.includes(keyword);
 		// });
 
 		// setListStudent(result);
-	};
+	}, 2000);
 
 	const handleClickSearch = () => {
 		const result = listStudent.filter((student) => {
@@ -168,7 +169,7 @@ function App() {
 				)}
 			</div>
 			<div className='mt-5 mb-5' style={{ display: 'flex' }}>
-				<Input onChange={handleSearch} />
+				<Input value={keyword} onChange={handleSearch} />
 				<Button
 					color='primary'
 					style={{ marginLeft: '8px' }}
@@ -205,6 +206,7 @@ function App() {
 						: listStudent.map((student, index) => {
 								return (
 									<Student
+										key={student.id}
 										id={student.id}
 										firstName={student.firstName}
 										lastName={student.lastName}
