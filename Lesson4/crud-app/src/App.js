@@ -132,7 +132,11 @@ function App() {
 
 	const handleClickSearch = () => {
 		const result = listStudent.filter((student) => {
-			return student.userName.includes(keyword);
+			return (
+				student.userName.includes(keyword) ||
+				student.firstName.includes(keyword) ||
+				student.lastName.includes(keyword)
+			);
 		});
 
 		setListStudentFilter(result);
